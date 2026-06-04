@@ -1,0 +1,4 @@
+default_profile: engineer
+
+profile_sources:
+  - path: ./profiles
