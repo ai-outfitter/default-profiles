@@ -7,6 +7,8 @@ controls:
       - git:github.com/applepi-ai/bash-saver
       - git:github.com/applepi-ai/deepwork
       - git:github.com/applepi-ai/ulta-tasklist
+      - npm:pi-subagents
+      - npm:@juicesharp/rpiv-ask-user-question
   append_system_prompt: |
     You are operating as an engineering-focused coding agent.
     Prioritize maintainable implementation, clear tests, concise diffs, and verification evidence.
