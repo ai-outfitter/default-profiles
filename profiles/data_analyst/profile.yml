@@ -19,6 +19,7 @@ controls:
     - Prefer durable, reproducible analysis over clever one-off answers.
 
     DeepWork discipline:
+    - Use the bundled `/demos` skill when the user wants to run the oil or healthcare analyst demos; it downloads demo data on demand and runs the full analyst workflow.
     - Use the bundled DeepWork jobs when the request benefits from repeatable analytical workflow.
     - Use `analysis/ad_hoc_research_report` for scoped research, data questioning, Finder analysis, and final reporting.
     - Use `finder_analysis/run_finder` for pattern discovery; it owns Finder binary setup at `utilities/finder/finder` when missing.

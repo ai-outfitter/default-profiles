@@ -5,7 +5,7 @@ Default profile source for ApplePi users.
 ## Profiles
 
 - `engineer` - software engineering profile for coding, debugging, reviews, and implementation planning.
-- `data_analyst` - senior data analysis profile for dataset exploration, metric design, experiment review, business insight briefs, and executive reporting. Includes profile-bundled DeepWork analyst jobs.
+- `data_analyst` - senior data analysis profile for dataset exploration, metric design, experiment review, business insight briefs, and executive reporting. Includes profile-bundled DeepWork analyst jobs and a `/demos` skill for oil/healthcare demos.
 
 ## Data analyst DeepWork jobs
 
@@ -30,6 +30,21 @@ Included jobs and workflows:
 - `analyst/review_experiment` - assess experiment design or results without causal overclaiming.
 - `analyst/insight_brief` - synthesize mixed evidence into a concise business recommendation.
 - `analyst/executive_report` - create a leadership-ready analytical report.
+
+## Data analyst `/demos` skill
+
+The `data_analyst` profile also includes a profile-bundled Pi skill under:
+
+```text
+profiles/data_analyst/cli_specific/pi/skills/demos/
+```
+
+ApplePi versions that support profile-bundled Pi skills pass this folder to Pi as a `--skill` argument. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
+
+- `oil`
+- `healthcare` / `medicaid-spending`
+
+The skill is ordinary profile content. Users who do not want demo behavior can delete `cli_specific/pi/skills/demos/` from their local copied profile.
 
 ## Use with applepi setup
 
