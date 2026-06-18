@@ -20,6 +20,7 @@ When launched by an ApplePi version that supports profile-bundled DeepWork jobs,
 Included workflows:
 
 - `analyst/analyze_dataset` - inspect data quality and produce evidence-backed findings.
+- `analyst/prepare_finder` - check for the Finder pattern-discovery binary and download it to `.deepwork/tmp/finder` when missing.
 - `analyst/define_metrics` - define product or business metrics, guardrails, and instrumentation acceptance criteria.
 - `analyst/review_experiment` - assess experiment design or results without causal overclaiming.
 - `analyst/insight_brief` - synthesize mixed evidence into a concise business recommendation.
