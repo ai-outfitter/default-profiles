@@ -1,6 +1,6 @@
-# ApplePi Default Profiles
+# Outfitter Default Profiles
 
-Default profile source for ApplePi users.
+Default profile source for Outfitter users.
 
 ## Profiles
 
@@ -15,7 +15,7 @@ The `data_analyst` profile includes a DeepWork job bundle under:
 profiles/data_analyst/cli_specific/pi/deepwork/jobs/
 ```
 
-When launched by an ApplePi version that supports profile-bundled DeepWork jobs, the selected profile contributes this folder to `DEEPWORK_ADDITIONAL_JOBS_FOLDERS` so DeepWork can discover the analyst job bundle. The bundle is self-contained in this profile; the analyst profile keeps `controls.pi.allow_external_deepwork_jobs` false so unrelated inherited job folders do not broaden the default analyst surface.
+When launched by an Outfitter version that supports profile-bundled DeepWork jobs, the selected profile contributes this folder to `DEEPWORK_ADDITIONAL_JOBS_FOLDERS` so DeepWork can discover the analyst job bundle. The bundle is self-contained in this profile; the analyst profile keeps `controls.pi.allow_external_deepwork_jobs` false so unrelated inherited job folders do not broaden the default analyst surface.
 
 Included jobs and workflows:
 
@@ -39,17 +39,17 @@ The `data_analyst` profile also includes a profile-bundled Pi skill under:
 profiles/data_analyst/cli_specific/pi/skills/demos/
 ```
 
-ApplePi versions that support profile-bundled Pi skills pass this folder to Pi as a `--skill` argument. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
+Outfitter versions that support profile-bundled Pi skills pass this folder to Pi as a `--skill` argument. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
 
 - `oil`
 - `healthcare` / `medicaid-spending`
 
 The skill is ordinary profile content. Users who do not want demo behavior can delete `cli_specific/pi/skills/demos/` from their local copied profile.
 
-## Use with applepi setup
+## Use with outfitter setup
 
 ```bash
-applepi setup
+outfitter setup
 ```
 
 On a new machine will automatically use these profiles.
@@ -57,18 +57,18 @@ On a new machine will automatically use these profiles.
 To bootstrap directly from this repository:
 
 ```bash
-applepi setup https://github.com/applepi-ai/default-profiles
+outfitter setup https://github.com/ai-outfitter/default-profiles
 ```
 
 ## Manual addition
 
-Add this repository to your applepi settings:
+Add this repository to your outfitter settings:
 
 ```yaml
 default_profile: engineer
 
 profile_sources:
-  - github: applepi-ai/default-profiles
+  - github: ai-outfitter/default-profiles
     ref: main
     path: profiles
 ```
@@ -76,11 +76,11 @@ profile_sources:
 Then sync and run:
 
 ```bash
-applepi sync
-applepi run --profile engineer
-applepi run --profile data_analyst
+outfitter sync
+outfitter run --profile engineer
+outfitter run --profile data_analyst
 ```
 
 ## Verify analyst jobs
 
-After syncing profiles and using an ApplePi version with profile-bundled job support, run the `data_analyst` profile and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.
+After syncing profiles and using an Outfitter version with profile-bundled job support, run the `data_analyst` profile and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.

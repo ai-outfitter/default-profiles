@@ -31,7 +31,7 @@ https://unsupervised-preview.unsupervised-52b.workers.dev/demo-bundle/<demo-id>-
    ```
 
    If the current directory is not an empty/scratch project, ask before using `--force`, or offer a scratch target such as `/tmp/deepwork-demos/<demo-id>`.
-3. Read `.applepi/demo-initial-prompt.txt` after the helper completes.
+3. Read `.outfitter/demo-initial-prompt.txt` after the helper completes.
 4. Execute the demo for real using the self-contained analyst DeepWork jobs. The prompt normally begins with `/deepwork analysis/ad_hoc_research_report ...`; use the DeepWork tools/extension rather than inventing a manual workflow.
 5. Continue until the report artifact is created. Summarize:
    - Demo id and bundle URL.
