@@ -1,5 +1,7 @@
 id: engineer
 label: Engineer
+description: Engineering setup for repository navigation, maintainable code changes, tests, and reviews.
+agent_generation: true
 controls:
   pi:
     extensions:
