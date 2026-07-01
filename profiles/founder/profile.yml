@@ -6,7 +6,7 @@ controls:
     extensions:
       - git:github.com/ai-outfitter/deepwork
       - npm:@juicesharp/rpiv-ask-user-question
-      - git:github.com/applepi-ai/ulta-tasklist
+      - git:github.com/ai-outfitter/ulta-tasklist
       - npm:pi-nolo
       - npm:pi-browser-harness
       - npm:@mjakl/pi-subagent
