@@ -7,6 +7,8 @@ controls:
       - git:github.com/ai-outfitter/deepwork
       - npm:@juicesharp/rpiv-ask-user-question
       - git:github.com/ai-outfitter/ulta-tasklist
+      # Founder remaps Pi's editor/Vim yank off ctrl+y so pi-nolo can keep its
+      # default shortcut without emitting a startup conflict warning.
       - npm:pi-nolo
       - npm:pi-browser-harness
       - npm:@mjakl/pi-subagent
