@@ -1,4 +1,4 @@
-id: media_editor
+id: media-editor
 label: Media Editor
 description: Video post-production setup for transcript-driven editing — whisper.cpp transcription, ffmpeg cuts and speed changes, and publication-ready exports.
 controls:
