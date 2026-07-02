@@ -8,9 +8,13 @@ controls:
     extensions:
       - git:github.com/ai-outfitter/deepwork
       - npm:@juicesharp/rpiv-ask-user-question
-      # Founder remaps Pi thinking off ctrl+shift+t so ulta-tasklist can keep
-      # its plan toggle shortcut without emitting a startup conflict warning.
-      - git:github.com/ai-outfitter/ulta-tasklist
+      # Disabled for now: ulta-tasklist hard-codes ctrl+shift+t for its plan
+      # toggle, and outfitter always rebinds ctrl+shift+t to Pi's thinking
+      # cycle in the composite profile, so the alt+t remap in
+      # cli_specific/pi/keybindings.json never frees the key and Pi emits a
+      # startup shortcut-conflict warning. Re-enable
+      # once the extension's shortcut is configurable or moved off that key.
+      # - git:github.com/ai-outfitter/ulta-tasklist
       # Founder remaps Pi's editor/Vim yank off ctrl+y so pi-nolo can keep its
       # default shortcut without emitting a startup conflict warning.
       - npm:pi-nolo
