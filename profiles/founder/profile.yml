@@ -3,6 +3,8 @@ label: Founder
 description: Founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.
 controls:
   pi:
+    skills:
+      - skills/pyramid-principle
     extensions:
       - git:github.com/ai-outfitter/deepwork
       - npm:@juicesharp/rpiv-ask-user-question
