@@ -7,6 +7,20 @@ Default profile source for Outfitter users.
 - `founder` - founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.
 - `engineer` - engineering setup for repository navigation, maintainable code changes, tests, and reviews.
 - `data_analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. Defaults Pi to `openai-codex` / `gpt-5.5`, and includes profile-bundled DeepWork analyst jobs plus a `/demos` skill for oil/healthcare demos.
+- `media_editor` - video post-production setup for transcript-driven editing: whisper.cpp transcription, ffmpeg cuts/speed changes, and publication-ready exports. Bundles `/transcribe` and `/ffmpeg-edit` Pi skills.
+
+## Media editor skills
+
+The `media_editor` profile bundles Pi skills under:
+
+```text
+profiles/media_editor/cli_specific/pi/skills/
+```
+
+- `transcribe` - extract 16 kHz mono audio with ffmpeg and produce timestamped SRT/JSON transcripts with whisper.cpp (`whisper-cli`).
+- `ffmpeg-edit` - inspect media with ffprobe, cut and speed-adjust clips (setpts/atempo), concatenate, and export publication-ready H.264 MP4s.
+
+The profile's system prompt describes the end-to-end pipeline: inspect → transcribe → plan the edit from the transcript → cut/speed with ffmpeg → export → re-transcribe the final render and verify.
 
 ## Data analyst DeepWork jobs
 
