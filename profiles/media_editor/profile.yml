@@ -20,6 +20,9 @@ controls:
       concatenation, encoding, and final export. No other video tools.
     - ffprobe for reading durations, chapter markers, and stream metadata.
 
+    If any tool is missing, use the `setup-tools` skill to install the
+    toolchain for the current OS (Homebrew, Nix, or apt) before starting.
+
     The standard pipeline, end to end:
 
     1. **Inspect** — run ffprobe on the source recording to learn duration,
