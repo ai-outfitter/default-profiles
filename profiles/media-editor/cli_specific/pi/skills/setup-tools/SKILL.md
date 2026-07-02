@@ -92,9 +92,22 @@ user before pulling the large model.
 
 ## Verify
 
+Quick quiet preflight — if this prints nothing, the media transcription
+toolchain is present:
+
+```bash
+ffmpeg -version >/dev/null 2>&1 || echo "missing: ffmpeg"
+ffprobe -version >/dev/null 2>&1 || echo "missing: ffprobe"
+whisper-cli --help >/dev/null 2>&1 || echo "missing: whisper-cli"
+ls ~/.cache/whisper/ggml-*.bin >/dev/null 2>&1 || echo "missing: whisper model in ~/.cache/whisper"
+```
+
+Verbose verification:
+
 ```bash
 ffmpeg -version && ffprobe -version
-whisper-cli --help | head -1
+command -v whisper-cli
+whisper-cli --help >/tmp/whisper-help.txt 2>&1
 ls -lh ~/.cache/whisper/ggml-*.bin
 ```
 
