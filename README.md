@@ -6,14 +6,29 @@ Default profile source for Outfitter users.
 
 - `founder` - founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.
 - `engineer` - engineering setup for repository navigation, maintainable code changes, tests, and reviews.
-- `data_analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. Defaults Pi to `openai-codex` / `gpt-5.5`, and includes profile-bundled DeepWork analyst jobs plus a `/demos` skill for oil/healthcare demos.
+- `data-analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. Defaults Pi to `openai-codex` / `gpt-5.5`, and includes profile-bundled DeepWork analyst jobs plus a `/demos` skill for oil/healthcare demos.
+- `media-editor` - video post-production setup for transcript-driven editing: whisper.cpp transcription, ffmpeg cuts/speed changes, and publication-ready exports. Bundles `/transcribe`, `/ffmpeg-edit`, and `/setup-tools` Pi skills.
+
+## Media editor skills
+
+The `media-editor` profile bundles Pi skills under:
+
+```text
+profiles/media-editor/cli_specific/pi/skills/
+```
+
+- `transcribe` - extract 16 kHz mono audio with ffmpeg and produce timestamped SRT/JSON transcripts with whisper.cpp (`whisper-cli`).
+- `ffmpeg-edit` - inspect media with ffprobe, cut and speed-adjust clips (setpts/atempo), concatenate, and export publication-ready H.264 MP4s.
+- `setup-tools` - install and verify the toolchain (ffmpeg, whisper.cpp, whisper model) via Homebrew on macOS, Nix, or apt + source build on Debian/Ubuntu.
+
+The profile's system prompt describes the end-to-end pipeline: inspect → transcribe → plan the edit from the transcript → cut/speed with ffmpeg → export → re-transcribe the final render and verify.
 
 ## Data analyst DeepWork jobs
 
-The `data_analyst` profile includes a DeepWork job bundle under:
+The `data-analyst` profile includes a DeepWork job bundle under:
 
 ```text
-profiles/data_analyst/cli_specific/pi/deepwork/jobs/
+profiles/data-analyst/cli_specific/pi/deepwork/jobs/
 ```
 
 When launched by an Outfitter version that supports profile-bundled DeepWork jobs, the selected profile contributes this folder to `DEEPWORK_ADDITIONAL_JOBS_FOLDERS` so DeepWork can discover the analyst job bundle. The bundle is self-contained in this profile; the analyst profile keeps `controls.pi.allow_external_deepwork_jobs` false so unrelated inherited job folders do not broaden the default analyst surface.
@@ -34,10 +49,10 @@ Included jobs and workflows:
 
 ## Data analyst `/demos` skill
 
-The `data_analyst` profile also includes a profile-bundled Pi skill under:
+The `data-analyst` profile also includes a profile-bundled Pi skill under:
 
 ```text
-profiles/data_analyst/cli_specific/pi/skills/demos/
+profiles/data-analyst/cli_specific/pi/skills/demos/
 ```
 
 Outfitter versions that support profile-bundled Pi skills pass this folder to Pi as a `--skill` argument. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
@@ -79,9 +94,9 @@ Then sync and run:
 ```bash
 outfitter sync
 outfitter run --profile engineer
-outfitter run --profile data_analyst
+outfitter run --profile data-analyst
 ```
 
 ## Verify analyst jobs
 
-After syncing profiles and using an Outfitter version with profile-bundled job support, run the `data_analyst` profile and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.
+After syncing profiles and using an Outfitter version with profile-bundled job support, run the `data-analyst` profile and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.
