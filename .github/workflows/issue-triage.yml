@@ -1,0 +1,91 @@
+# Triage every newly opened issue: the agent classifies it as fix/feature/idea,
+# applies that one label, and leaves a comment (or asks a team member to look
+# when unclear). Runs on GitHub Models (openai/gpt-4.1-mini) with zero API
+# keys — `models: read` is all the inference auth needed.
+#
+# Model choice is limit-bound, not quality-bound (measured July 2026):
+# full gpt-5 429s mid-loop every run (frontier tier can't absorb an agentic
+# burst); gpt-5-mini 500s ~110s into pi's first real request and its small
+# daily quota drains fast. gpt-4.1-mini completes runs reliably. If you
+# change the model, re-validate a full run's side effects, not just the
+# first response. Details: ai-outfitter/actions
+# docs/research/inference-pricing.md.
+name: Issue triage
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+  models: read
+
+jobs:
+  triage:
+    # Never triage issues the automation itself opened.
+    if: github.event.issue.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure GitHub Models provider for pi
+        run: |
+          mkdir -p "$HOME/.pi/agent"
+          cp .github/models.json "$HOME/.pi/agent/models.json"
+      - uses: ai-outfitter/actions@v1
+        id: agent
+        with:
+          profile: issue-triage
+          # Absolute path: outfitter resolves relative path sources against /,
+          # not the workspace (see ai-outfitter/actions path handling).
+          profile-source: ${{ github.workspace }}/profiles
+          # Pass the issue by number only; the profile fetches content with
+          # `gh` so untrusted issue text never enters workflow code.
+          prompt: >-
+            Triage issue #${{ github.event.issue.number }} in
+            ${{ github.repository }} following your process.
+      # The action saved the agent's full session as a self-contained HTML
+      # workflow artifact. Append the artifact link to the agent's own triage
+      # comment so the decision trail is one click from the issue. Runs even
+      # when the agent step failed — a transcript matters most then.
+      - name: Link transcript on the triage comment
+        if: ${{ !cancelled() && steps.agent.outputs.transcript-artifact-url != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+          URL: ${{ steps.agent.outputs.transcript-artifact-url }}
+        run: |
+          comment_id="$(gh api "repos/$REPO/issues/$ISSUE/comments" \
+            --jq '[.[] | select(.user.login == "github-actions[bot]")] | last | .id // empty')"
+          footer="$(printf '\n\n---\n<sub>🧾 <a href="%s">Full agent transcript</a> (workflow artifact; requires repo access)</sub>' "$URL")"
+          if [ -n "$comment_id" ]; then
+            gh api "repos/$REPO/issues/comments/$comment_id" --jq .body > /tmp/body.md
+            # Idempotent on re-runs: keep the first transcript footer rather
+            # than appending one per run.
+            if grep -qF "Full agent transcript" /tmp/body.md; then
+              echo "Transcript footer already present; skipping."
+              exit 0
+            fi
+            printf '%s' "$footer" >> /tmp/body.md
+            gh api -X PATCH "repos/$REPO/issues/comments/$comment_id" -F body=@/tmp/body.md > /dev/null
+          else
+            printf '%s' "$footer" | gh issue comment "$ISSUE" --repo "$REPO" --body-file -
+          fi
+
+      # A green agent run is not proof of work — validate the side effects:
+      # exactly one triage label (or the unclear-issue path) and a comment.
+      # Pinned to the commit that adds the script.
+      - name: Validate triage side effects
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Authenticated fetch: unauthenticated raw.githubusercontent.com
+          # requests from runners get 429'd.
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/ai-outfitter/actions/contents/scripts/validate-triage.sh?ref=8626a9465170fd14c0f87f52a9147f9f2545ce46" \
+            > /tmp/validate-triage.sh
+          chmod +x /tmp/validate-triage.sh
+          /tmp/validate-triage.sh \
+            --repo "${{ github.repository }}" \
+            --issue "${{ github.event.issue.number }}" \
+            --allow-unlabeled
