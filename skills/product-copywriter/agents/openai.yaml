@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Copywriter"
+  short_description: "Sharpen product copy into human, specific prose"
+  default_prompt: "Use $product-copywriter to tighten this product page copy and remove generic LLM phrasing."

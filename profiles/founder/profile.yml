@@ -5,6 +5,7 @@ controls:
   pi:
     skills:
       - skills/pyramid-principle
+      - skills/product-copywriter
     extensions:
       - git:github.com/ai-outfitter/deepwork
       - npm:@juicesharp/rpiv-ask-user-question
