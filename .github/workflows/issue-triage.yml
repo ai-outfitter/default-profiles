@@ -31,14 +31,13 @@ jobs:
         run: |
           mkdir -p "$HOME/.pi/agent"
           cp .github/models.json "$HOME/.pi/agent/models.json"
-      - uses: ai-outfitter/actions@v1
+      - uses: ai-outfitter/actions@v2
         id: agent
         with:
-          profile: issue-triage
-          # Absolute path: outfitter resolves relative path sources against /,
-          # not the workspace (see ai-outfitter/actions path handling).
-          profile-source: ${{ github.workspace }}/profiles
-          # Pass the issue by number only; the profile fetches content with
+          agent: actions-agent
+          # The standalone Dotagents payload is the repository root.
+          source: ${{ github.workspace }}
+          # Pass the issue by number only; the agent fetches content with
           # `gh` so untrusted issue text never enters workflow code.
           prompt: >-
             Triage issue #${{ github.event.issue.number }} in

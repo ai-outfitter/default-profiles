@@ -1,4 +1,4 @@
-# Using these profiles
+# Using these agents
 
 ## With `outfitter setup`
 
@@ -6,31 +6,36 @@
 outfitter setup
 ```
 
-On a new machine this automatically uses these profiles.
+On a new machine this automatically installs the default agent catalog.
 
 To bootstrap directly from this repository:
 
 ```bash
-outfitter setup https://github.com/ai-outfitter/default-profiles
+outfitter setup
 ```
+
+Outfitter records the immutable `ai-outfitter/default-profiles` Release Please tag shipped by that
+CLI version.
 
 ## Manual addition
 
 Add this repository to your outfitter settings:
 
 ```yaml
-default_profile: engineer
+default_agent: engineer
+default_harness: pi
 
-profile_sources:
+sources:
   - github: ai-outfitter/default-profiles
-    ref: main
-    path: profiles
+    ref: v1.0.0
 ```
+
+Use a published version tag; do not use a moving branch name.
 
 Then sync and run:
 
 ```bash
 outfitter sync
-outfitter run --profile engineer
-outfitter run --profile data-analyst
+outfitter run engineer
+outfitter run data-analyst
 ```

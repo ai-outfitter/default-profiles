@@ -1,4 +1,2 @@
-default_profile: founder
-
-profile_sources:
-  - path: ./profiles
+default_agent: founder
+default_harness: pi

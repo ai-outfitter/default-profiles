@@ -16,7 +16,7 @@ Downloads a full runnable data analyst demo bundle from the legacy
 DeepWork Frontend R2-backed /demo-bundle route and unpacks it into the target
 project directory. The demo's initial prompt is written to:
 
-  <target>/.outfitter/demo-initial-prompt.txt
+  <target>/.deepwork/demo-initial-prompt.txt
 
 Environment:
   DEMO_BUNDLE_HOST       Bundle host. Defaults to https://unsupervised-preview.unsupervised-52b.workers.dev
@@ -66,7 +66,7 @@ command -v python3 >/dev/null 2>&1 || fail "python3 is required"
 TARGET_DIR="$(python3 -c 'import os,sys; print(os.path.abspath(sys.argv[1]))' "$TARGET_DIR")"
 mkdir -p "$TARGET_DIR"
 
-if [[ "$(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -not -name .outfitter -print -quit)" && "$FORCE" != "true" ]]; then
+if [[ "$(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -not -name .deepwork -print -quit)" && "$FORCE" != "true" ]]; then
   fail "Target directory is not empty: $TARGET_DIR (use --force only after confirming overwrite is safe)"
 fi
 
@@ -79,9 +79,9 @@ echo "Downloading ${DEMO_ID} demo bundle: $URL"
 curl -fsSL --retry 3 --retry-delay 1 -o "$TMP_ZIP" "$URL"
 
 unzip -q -o "$TMP_ZIP" -d "$TARGET_DIR"
-mkdir -p "$TARGET_DIR/.outfitter"
+mkdir -p "$TARGET_DIR/.deepwork"
 
-python3 - "$TARGET_DIR/demo.yml" "$TARGET_DIR/.outfitter/demo-initial-prompt.txt" <<'PY'
+python3 - "$TARGET_DIR/demo.yml" "$TARGET_DIR/.deepwork/demo-initial-prompt.txt" <<'PY'
 import re
 import sys
 from pathlib import Path
@@ -105,7 +105,7 @@ Demo prepared.
   id: $DEMO_ID
   target: $TARGET_DIR
   bundle: $URL
-  prompt: $TARGET_DIR/.outfitter/demo-initial-prompt.txt
+  prompt: $TARGET_DIR/.deepwork/demo-initial-prompt.txt
 
-Next: run the prompt in $TARGET_DIR with the data analyst profile's bundled DeepWork jobs.
+Next: run the prompt in $TARGET_DIR with the data analyst agent's bundled DeepWork jobs.
 EOF

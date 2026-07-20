@@ -1,20 +1,26 @@
-# Outfitter Default Profiles
+# Outfitter Default Agents
 
-Default profile source for Outfitter users.
+The default standalone `.agents` catalog for Outfitter users. The repository
+root is a Dotagents payload: agents select their skills, model, extensions, and
+other loadout elements directly from `agent.md` frontmatter.
 
-## Profiles
+## Agents
 
 - `founder` - founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.
 - `engineer` - engineering setup for repository navigation, maintainable code changes, tests, and reviews.
+- `actions-agent` - conventional headless identity for GitHub Actions automation.
 - `data-analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. See [docs/data-analyst.md](docs/data-analyst.md).
 - `media-editor` - video post-production setup for transcript-driven editing with whisper.cpp and ffmpeg. See [docs/media-editor.md](docs/media-editor.md).
 
 ## Quick start
 
 ```bash
-outfitter setup https://github.com/ai-outfitter/default-profiles
-outfitter run --profile engineer
+outfitter setup
+outfitter run engineer
 ```
+
+The default setup path uses the immutable Release Please version tag pinned by the installed
+Outfitter version.
 
 See [docs/usage.md](docs/usage.md) for manual settings configuration and syncing.
 

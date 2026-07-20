@@ -1,13 +1,13 @@
-# Media editor profile
+# Media editor agent
 
-The `media-editor` profile is a video post-production setup for transcript-driven editing: whisper.cpp transcription, ffmpeg cuts/speed changes, and publication-ready exports.
+The `media-editor` agent is a video post-production setup for transcript-driven editing: whisper.cpp transcription, ffmpeg cuts/speed changes, and publication-ready exports.
 
 ## Bundled Pi skills
 
-The profile bundles Pi skills under:
+The agent selects Dotagents skills from:
 
 ```text
-profiles/media-editor/cli_specific/pi/skills/
+skills/
 ```
 
 - `transcribe` - extract 16 kHz mono audio with ffmpeg and produce timestamped SRT/JSON transcripts with whisper.cpp (`whisper-cli`).
@@ -16,4 +16,4 @@ profiles/media-editor/cli_specific/pi/skills/
 
 ## Editing pipeline
 
-The profile's system prompt describes the end-to-end pipeline: inspect → transcribe → plan the edit from the transcript → cut/speed with ffmpeg → export → re-transcribe the final render and verify.
+The agent instructions describe the end-to-end pipeline: inspect → transcribe → plan the edit from the transcript → cut/speed with ffmpeg → export → re-transcribe the final render and verify.

@@ -1,16 +1,16 @@
-# Data analyst profile
+# Data analyst agent
 
-The `data-analyst` profile is a data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. It defaults Pi to `openai-codex` / `gpt-5.5`.
+The `data-analyst` agent is a data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. Its loadout selects `openai-codex/gpt-5.5`.
 
 ## DeepWork job bundle
 
-The profile includes a DeepWork job bundle under:
+The catalog retains its reusable Pi DeepWork job bundle under:
 
 ```text
-profiles/data-analyst/cli_specific/pi/deepwork/jobs/
+deepwork/jobs/
 ```
 
-When launched by an Outfitter version that supports profile-bundled DeepWork jobs, the selected profile contributes this folder to `DEEPWORK_ADDITIONAL_JOBS_FOLDERS` so DeepWork can discover the analyst job bundle. The bundle is self-contained in this profile; the analyst profile keeps `controls.pi.allow_external_deepwork_jobs` false so unrelated inherited job folders do not broaden the default analyst surface.
+DeepWork jobs are extension-specific assets rather than Dotagents resources. A compatible Pi projection contributes this folder to `DEEPWORK_ADDITIONAL_JOBS_FOLDERS`; the agent selects the DeepWork extension in its loadout.
 
 Included jobs and workflows:
 
@@ -28,19 +28,19 @@ Included jobs and workflows:
 
 ## `/demos` skill
 
-The profile also includes a profile-bundled Pi skill under:
+The agent selects the protocol-native demo skill under:
 
 ```text
-profiles/data-analyst/cli_specific/pi/skills/demos/
+skills/demos/
 ```
 
-Outfitter versions that support profile-bundled Pi skills pass this folder to Pi as a `--skill` argument. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
+Outfitter resolves the `demos` slug from the agent loadout and passes the skill to Pi. The skill can fetch full runnable demo bundles from the legacy DeepWork Frontend R2-backed `/demo-bundle/<id>-full-data` route and run the self-contained analyst workflow for:
 
 - `oil`
 - `healthcare` / `medicaid-spending`
 
-The skill is ordinary profile content. Users who do not want demo behavior can delete `cli_specific/pi/skills/demos/` from their local copied profile.
+Users who do not want demo behavior can remove `demos` from their agent override or shadow the agent with a smaller loadout.
 
 ## Verify analyst jobs
 
-After syncing profiles and using an Outfitter version with profile-bundled job support, run the `data-analyst` profile and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.
+After syncing the catalog with an Outfitter version that projects the DeepWork asset folder, run `outfitter run data-analyst` and ask DeepWork for available workflows. The bundled `analysis`, `business_context`, `datasource_management`, `finder_analysis`, `report_formatting`, and `analyst` jobs should appear with the workflows listed above.
