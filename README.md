@@ -10,7 +10,6 @@ other loadout elements directly from `agent.md` frontmatter.
 - `engineer` - engineering setup for repository navigation, maintainable code changes, tests, and reviews.
 - `actions-agent` - conventional headless identity for GitHub Actions automation.
 - `data-analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. See [docs/data-analyst.md](docs/data-analyst.md).
-- `media-editor` - video post-production setup for transcript-driven editing with whisper.cpp and ffmpeg. See [docs/media-editor.md](docs/media-editor.md).
 
 ## Quick start
 

@@ -1,7 +1,6 @@
 ---
 name: founder
 description: Founder-operator agent for building, product thinking, research checks, dense prose, and careful delivery.
-skills: [pyramid-principle]
 extensions:
   - git:github.com/ai-outfitter/deepwork
   - npm:@juicesharp/rpiv-ask-user-question
