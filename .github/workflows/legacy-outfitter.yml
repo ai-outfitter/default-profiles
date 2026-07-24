@@ -1,0 +1,36 @@
+name: Legacy Outfitter compatibility
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.18.0
+      - name: Install the legacy client
+        run: npm install --global @ai-outfitter/outfitter@0.11.0
+      - name: Sync the legacy profile projection
+        run: |
+          test_home="$(mktemp -d)"
+          mkdir -p "$test_home/.outfitter"
+          printf '%s\n' \
+            'profile_sources:' \
+            "  - uri: git+file://${GITHUB_WORKSPACE}" \
+            '    path: profiles' \
+            > "$test_home/.outfitter/settings.yml"
+          sync_output="$(HOME="$test_home" outfitter sync)"
+          printf '%s\n' "$sync_output"
+          printf '%s\n' "$sync_output" | grep -F '(3 profiles validated.)'
+          if printf '%s\n' "$sync_output" | grep -F 'failed:'; then
+            exit 1
+          fi

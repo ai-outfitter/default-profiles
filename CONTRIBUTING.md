@@ -4,6 +4,7 @@
 
 - `settings.yml` - Outfitter defaults for this standalone `.agents` payload.
 - `agents/<id>/agent.md` - one identity and loadout per agent.
+- `profiles/<id>/profile.yml` - compatibility projections for Outfitter 0.11 and earlier.
 - `skills/<id>/SKILL.md` - reusable Agent Skills selected by agent slug.
 - `deepwork/jobs/` - reusable Pi DeepWork extension assets.
 - `docs/` - extended documentation for individual agents and usage.
@@ -15,6 +16,7 @@
 3. Reference Pi extensions by package source, e.g. `git:github.com/ai-outfitter/<repo>` or a pinned npm spec.
 4. Verify locally with `outfitter validate --strict` and `outfitter run <id>`.
 5. Add extended documentation to `docs/` rather than the README; keep the README to a short agent list and quick start.
+6. Keep an existing `profiles/<id>/profile.yml` compatibility projection aligned with the agent's identity and loadout.
 
 ## Conventions
 

@@ -23,6 +23,9 @@ Outfitter version.
 
 See [docs/usage.md](docs/usage.md) for manual settings configuration and syncing.
 
+The `profiles/` directory preserves the legacy catalog contract used by Outfitter 0.11 and
+earlier. Current Outfitter releases use the root Dotagents payload instead.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
