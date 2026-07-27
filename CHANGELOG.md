@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/ai-outfitter/default-profiles/compare/v1.0.0...v1.1.0) (2026-07-27)
+
+
+### Features
+
+* **founder:** adopt the persona review loop ([fc07419](https://github.com/ai-outfitter/default-profiles/commit/fc0741981c628c2db6dbb50326fe5a1b7f3b4a21))
+* pin community-profiles as a catalog source ([4912f2b](https://github.com/ai-outfitter/default-profiles/commit/4912f2bc588565c6dbc724f38ec374b8b2bd4b8d))
+* provide platform profile with Playwright MCP ([c31e66d](https://github.com/ai-outfitter/default-profiles/commit/c31e66d2deba18e421967d9e9ef8b43130fefdd8))
+
+
+### Bug Fixes
+
+* **founder:** run persona reviews through the shared skill ([#17](https://github.com/ai-outfitter/default-profiles/issues/17)) ([efcf098](https://github.com/ai-outfitter/default-profiles/commit/efcf098de7242dd231348dcac7d83095999896d9))
+
 ## 1.0.0 (2026-07-21)
 
 
