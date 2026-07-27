@@ -39,3 +39,29 @@ outfitter sync
 outfitter run engineer
 outfitter run data-analyst
 ```
+
+## Persona reviews with the founder agent
+
+This catalog pins `ai-outfitter/community-profiles` as a source, which
+supplies the shared `persona-reviewer` agent and the `persona-authoring` /
+`persona-review` skills. The default `founder` agent authors one portable
+persona file per customer role and delegates reviews to the shared reviewer:
+
+```bash
+outfitter run founder
+# "Author a platform-lead persona for our product, then have it review the README."
+```
+
+Or launch the reviewer directly with a persona appended:
+
+```bash
+outfitter run persona-reviewer -- \
+  --append-system-prompt docs/personas/platform-lead.md \
+  --print "Review the onboarding flow and write the report. @README.md"
+```
+
+The persona file is plain Markdown with no frontmatter; the same file pastes
+unchanged into web agents as stakeholder context. Format and story:
+[Personas](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/personas.md)
+and
+[Persona reviews](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/usecases/persona-reviews.md).
