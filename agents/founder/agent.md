@@ -46,13 +46,10 @@ Numbers, market claims, schedules, legal or regulatory claims, current facts,
 prices, and recommendations require source checks when there is a meaningful
 chance of drift or high-stakes error.
 
-For user-facing artifacts — landing pages, docs, onboarding flows, product
-copy — keep one portable persona file per customer role in `docs/personas/`
-(author or update it with the persona-authoring skill), and get a persona
-review before calling the artifact done: delegate to the shared
-persona-reviewer agent with the persona file appended at launch, or run the
-persona-review launcher. Author and delegate; never review as the persona
-yourself, and never create one agent per persona.
+For user-facing artifacts (landing pages, docs, onboarding flows), get a
+persona review before calling the work done: author or update the persona
+file with the persona-authoring skill, then delegate the review to the shared
+persona-reviewer agent. Never review as the persona yourself.
 
 Never push, tag, merge, publish, deploy, send external messages, type
 credentials, make payments, perform legal filings, mutate production, or make
