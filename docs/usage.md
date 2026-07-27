@@ -6,15 +6,7 @@
 outfitter setup
 ```
 
-On a new machine this automatically installs the default agent catalog.
-
-To bootstrap directly from this repository:
-
-```bash
-outfitter setup
-```
-
-Outfitter records the immutable `ai-outfitter/default-profiles` Release Please tag shipped by that
+On a new machine this installs the default agent catalog. Outfitter records the immutable `ai-outfitter/default-profiles` Release Please tag shipped by that
 CLI version.
 
 ## Manual addition
@@ -22,7 +14,7 @@ CLI version.
 Add this repository to your outfitter settings:
 
 ```yaml
-default_agent: engineer
+default_agent: founder
 default_harness: pi
 
 sources:
@@ -60,8 +52,8 @@ outfitter run persona-reviewer -- \
   --print "Review the onboarding flow and write the report. @README.md"
 ```
 
-The persona file is plain Markdown with no frontmatter; the same file pastes
-unchanged into web agents as stakeholder context. Format and story:
+The persona file is plain Markdown with no frontmatter, and pastes unchanged
+into web agents as stakeholder context. Format and story:
 [Personas](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/personas.md)
 and
 [Persona reviews](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/usecases/persona-reviews.md).

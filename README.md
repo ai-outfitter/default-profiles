@@ -15,23 +15,18 @@ other loadout elements directly from `agent.md` frontmatter.
 ## Personas via the founder agent
 
 The catalog pins [community-profiles](https://github.com/ai-outfitter/community-profiles)
-as a source, so the persona machinery is available out of the box. The
-`founder` agent (the default) carries the loop: it authors one portable
-Markdown persona file per customer role in `docs/personas/` (via the
-`persona-authoring` skill) and delegates reviews to the shared
-`persona-reviewer` agent with the file appended at launch. The same file
-pastes unchanged into web agents (claude.ai project knowledge, ChatGPT) as
-stakeholder context. See Outfitter's
+as a source, so the persona machinery is already available. The default
+`founder` agent authors one persona file per customer role in `docs/personas/`
+and delegates reviews to the shared `persona-reviewer` agent. The same file
+also works as pasted stakeholder context in web agents. See Outfitter's
 [Personas](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/personas.md)
-spec and
-[Persona reviews](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/usecases/persona-reviews.md)
-story.
+spec and [docs/usage.md](docs/usage.md) for the commands.
 
 ## Quick start
 
 ```bash
 outfitter setup
-outfitter run engineer
+outfitter run founder
 ```
 
 The default setup path uses the immutable Release Please version tag pinned by the installed
