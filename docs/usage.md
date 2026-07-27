@@ -19,7 +19,7 @@ default_harness: pi
 
 sources:
   - github: ai-outfitter/default-profiles
-    ref: v1.0.0
+    ref: v1.1.0
 ```
 
 Use a published version tag; do not use a moving branch name.
@@ -32,24 +32,31 @@ outfitter run engineer
 outfitter run data-analyst
 ```
 
-## Persona reviews with the founder agent
+## Persona reviews
 
 This catalog pins `ai-outfitter/community-profiles` as a source, which
 supplies the shared `persona-reviewer` agent and the `persona-authoring` /
-`persona-review` skills. The default `founder` agent authors one portable
-persona file per customer role and delegates reviews to the shared reviewer:
+`persona-review` skills. The `founder` profile selects both skills; the
+`engineer` profile selects `persona-review`. Run the shared reviewer in its own
+Outfitter process and keep the report as durable project context:
+
+```bash
+mkdir -p docs/persona-reviews
+outfitter run persona-reviewer -- \
+  --append-system-prompt docs/personas/platform-lead.md \
+  --print "Review the onboarding flow. @README.md" \
+  > docs/persona-reviews/platform-lead-onboarding.md
+```
+
+The default `founder` agent carries the whole loop. It authors one portable
+persona file per customer role with `persona-authoring`, then invokes the
+`persona-review` skill to launch the same reviewer process and save its report
+under `docs/persona-reviews/`:
 
 ```bash
 outfitter run founder
-# "Author a platform-lead persona for our product, then have it review the README."
-```
-
-Or launch the reviewer directly with a persona appended:
-
-```bash
-outfitter run persona-reviewer -- \
-  --append-system-prompt docs/personas/platform-lead.md \
-  --print "Review the onboarding flow and write the report. @README.md"
+# "Author a platform-lead persona, review the README through persona-review,
+# and save the report under docs/persona-reviews/."
 ```
 
 The persona file is plain Markdown with no frontmatter, and pastes unchanged
