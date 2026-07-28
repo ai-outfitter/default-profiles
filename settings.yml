@@ -6,4 +6,4 @@ sources:
     ref: v1.2.0
   - github: ai-outfitter/community-profiles
     ref: v1.2.0
-    path: environment/http-token
+    path: system-prompts/environment-http-token

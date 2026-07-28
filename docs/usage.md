@@ -78,6 +78,6 @@ stronger than project context. Do not copy it into `AGENTS.md`; use that file
 for repository-specific instructions.
 
 To opt into SSH in a custom catalog, replace the
-`environment/http-token` source path with `environment/ssh`. To customize the
-policy, copy the environment files into your own `.agents` payload and edit
-them there.
+`system-prompts/environment-http-token` source path with
+`system-prompts/environment-ssh`. To customize the policy, copy the environment
+system prompt into your own `.agents` payload and edit it there.
