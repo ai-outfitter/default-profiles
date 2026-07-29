@@ -4,6 +4,12 @@ The default standalone `.agents` catalog for Outfitter users. The repository
 root is a Dotagents payload: agents select their skills, model, extensions, and
 other loadout elements directly from `agent.md` frontmatter.
 
+The catalog adopts the community
+`system-prompts/environment.repo.http-token.md` starter as its root
+`system-prompt.md`. It gives the default agents a canonical
+`~/repos/<owner>/<repo-name>` project layout and HTTPS repository
+authentication through a GitHub CLI-managed token.
+
 ## Agents
 
 - `founder` - founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.

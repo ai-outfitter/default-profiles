@@ -64,3 +64,20 @@ into web agents as stakeholder context. Format and story:
 [Personas](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/personas.md)
 and
 [Persona reviews](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/usecases/persona-reviews.md).
+
+## Environment baseline
+
+The founder and other default agents use the community
+`system-prompts/environment.repo.http-token.md` starter as their environment
+baseline. It places repositories and worktrees under
+`~/repos/<owner>/<repo-name>` and uses HTTPS with a GitHub CLI-managed token by
+default. Each GitHub organization still needs repository access, token
+permissions, and any required SSO authorization configured separately.
+
+This baseline is the catalog's root `system-prompt.md`. A repository's
+`AGENTS.md` remains the source for project-specific instructions.
+
+To opt into SSH in a custom catalog, copy
+`system-prompts/environment.repo.ssh.md` to that catalog's `system-prompt.md`.
+To customize the policy, copy the selected environment prompt into your own
+`.agents` payload and edit it there.
