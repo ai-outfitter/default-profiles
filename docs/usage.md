@@ -67,17 +67,17 @@ and
 
 ## Environment baseline
 
-The founder and other default agents also compose the community environment
+The founder and other default agents use the community
+`system-prompts/environment.repo.http-token.md` starter as their environment
 baseline. It places repositories and worktrees under
 `~/repos/<owner>/<repo-name>` and uses HTTPS with a GitHub CLI-managed token by
 default. Each GitHub organization still needs repository access, token
 permissions, and any required SSO authorization configured separately.
 
-This baseline is part of the composed system prompt and is intentionally
-stronger than project context. Do not copy it into `AGENTS.md`; use that file
-for repository-specific instructions.
+This baseline is the catalog's root `system-prompt.md`. A repository's
+`AGENTS.md` remains the source for project-specific instructions.
 
-To opt into SSH in a custom catalog, replace the
-`system-prompts/environment-http-token` source path with
-`system-prompts/environment-ssh`. To customize the policy, copy the environment
-system prompt into your own `.agents` payload and edit it there.
+To opt into SSH in a custom catalog, copy
+`system-prompts/environment.repo.ssh.md` to that catalog's `system-prompt.md`.
+To customize the policy, copy the selected environment prompt into your own
+`.agents` payload and edit it there.
