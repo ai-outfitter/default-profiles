@@ -4,6 +4,10 @@ description: Founder-operator agent for building, product thinking, research che
 skills:
   - persona-authoring
   - persona-review
+mcp:
+  - google-gmail
+  - google-calendar
+  - google-contacts
 extensions:
   - git:github.com/ai-outfitter/deepwork
   - npm:@juicesharp/rpiv-ask-user-question
