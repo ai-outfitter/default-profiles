@@ -32,12 +32,18 @@ jobs:
         with:
           agent: actions-agent
           # The standalone Dotagents payload is the repository root.
-          source: ${{ github.workspace }}
+          # Resolve the org catalog: it carries the single model config and
+          # names the sources that supply the agents.
+          source: ai-outfitter/.agents
           # Pass the issue by number only; the agent fetches content with
           # `gh` so untrusted issue text never enters workflow code.
           prompt: >-
             Triage issue #${{ github.event.issue.number }} in
             ${{ github.repository }} following your process.
+        env:
+          # The provider config lives in ai-outfitter/.agents models.json and
+          # names this key by variable; only the value is supplied here.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       # The action saved the agent's full session as a self-contained HTML
       # workflow artifact. Append the artifact link to the agent's own triage
       # comment so the decision trail is one click from the issue. Runs even
