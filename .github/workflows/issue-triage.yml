@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p "$HOME/.pi/agent"
           cp .github/models.json "$HOME/.pi/agent/models.json"
-      - uses: ai-outfitter/actions@v2
+      - uses: ai-outfitter/actions@v1
         id: agent
         with:
           agent: actions-agent
