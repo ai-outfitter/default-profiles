@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/ai-outfitter/default-profiles/compare/v1.1.0...v1.1.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* **agents:** drop the agents community-profiles already ships ([397e733](https://github.com/ai-outfitter/default-profiles/commit/397e733138b07b839f2d162532502b23a6506958))
+* drop duplicated agents, re-pin cp v1.2.1, adopt the reference triage workflow ([b5a52e4](https://github.com/ai-outfitter/default-profiles/commit/b5a52e4b85122e89c328ef2e3571ed30908cc8b9))
+* pin the action to v1, which now carries the agent/source interface ([#20](https://github.com/ai-outfitter/default-profiles/issues/20)) ([e3c404b](https://github.com/ai-outfitter/default-profiles/commit/e3c404bb74c632640a4e9f474dccc4ac361b421e))
+
 ## [1.1.0](https://github.com/ai-outfitter/default-profiles/compare/v1.0.0...v1.1.0) (2026-07-27)
 
 
