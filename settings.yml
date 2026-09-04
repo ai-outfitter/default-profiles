@@ -1,6 +1,8 @@
-default_agent: founder
+default_agent: engineer
 default_harness: pi
 
 sources:
   - github: ai-outfitter/community-profiles
-    ref: v1.2.1
+    # v1.7.0 ships the engineer workflow: scoped-issues, draft-PR
+    # lifecycle, and the subagent-backed code-review skill.
+    ref: v1.7.0

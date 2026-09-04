@@ -7,7 +7,7 @@ other loadout elements directly from `agent.md` frontmatter.
 ## Agents
 
 - `founder` - founder-operator setup for building, product thinking, research checks, dense prose, and careful delivery.
-- `engineer` - engineering setup for repository navigation, maintainable code changes, tests, and reviews.
+- `engineer` - the default agent, supplied by community-profiles: files scoped issues, authors through the draft pull request lifecycle, and starts the adversarial review of its own pull requests.
 - `data-analyst` - data analysis setup for careful inspection, reproducible methods, assumptions, and summaries. See [docs/data-analyst.md](docs/data-analyst.md).
 
 ## Personas
@@ -16,8 +16,7 @@ The catalog pins [community-profiles](https://github.com/ai-outfitter/community-
 as a source, so the persona machinery is already available. The default
 `founder` agent authors one persona file per customer role in `docs/personas/`
 and invokes the `persona-review` skill to run the shared reviewer in its own
-Outfitter process. The `engineer` agent selects the same review skill for
-customer-facing product, documentation, and onboarding work. The same persona
+Outfitter process. The same persona
 file also works as pasted stakeholder context in web agents. See Outfitter's
 [Personas](https://github.com/ai-outfitter/outfitter/blob/main/docs/documentation/personas.md)
 spec and [docs/usage.md](docs/usage.md) for the commands.
@@ -26,7 +25,7 @@ spec and [docs/usage.md](docs/usage.md) for the commands.
 
 ```bash
 outfitter setup
-outfitter run founder
+outfitter run   # starts the engineer: settings.yml sets default_agent
 ```
 
 The default setup path uses the immutable Release Please version tag pinned by the installed
