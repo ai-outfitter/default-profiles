@@ -36,8 +36,7 @@ outfitter run data-analyst
 
 This catalog pins `ai-outfitter/community-profiles` as a source, which
 supplies the shared `persona-reviewer` agent and the `persona-authoring` /
-`persona-review` skills. The `founder` profile selects both skills; the
-`engineer` profile selects `persona-review`. Run the shared reviewer in its own
+`persona-review` skills. The `founder` profile selects both skills. Run the shared reviewer in its own
 Outfitter process and keep the report as durable project context:
 
 ```bash
